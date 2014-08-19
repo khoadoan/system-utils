@@ -1,0 +1,24 @@
+RunStream.sh -c <cfg file> [-s <tuple>[,<tuple>]*] [-o <tuple>,[,<tuple>]*]]
+
+<cfg file> - bash-style variable tuples
+	srcDir - source directory(ies)
+	tgtDir - target directory
+	mapper - fully qualified class or path to executable, including command-line
+            args
+	reducer - optional; fully qualified class or path to executabie, including
+             command-line args 
+	numReducers - defaults to 	0
+	genOpts - generic options to java (-D)
+	jobOpts - optsion to stream job
+	logFile - optional; stdout/stderr redirected by script; defaults to 
+	          RunStream.<yyyymmdd>
+
+RunStream.sh requires many of the hadoop utilities, such as dist-exec and 
+dist-cp.
+
+-- Substution Tuples --
+The -s option allows for run-time substitution tuples to be defined.  The LHS
+is up-cased, and any instance of '<'<LHS>'>' found in srcDir, tgtDir, logFile,
+ mapper, or reducer are substitued for the <RHS>.  Note that <PROCDATE> and
+ <PROC-DATE> are provided gratis, and default to the current date (yyyymmdd or
+ yyyy-mm-dd).

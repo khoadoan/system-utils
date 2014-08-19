@@ -1,0 +1,7 @@
+# DAG/job timings
+
+0) mkdir ~/data/<emr job id>; cd !:$
+1) GetEmrLogs.sh <emr job id> job
+2) GetEmrLogs.sh <emr job id> stderr
+3) ExtractJobTimings.pl j-*.job_* > jobtimings.csv
+4) DagTimings.pl -jtf=jobtimings.csv <emr job id>.stderr.<n> (7 for rachalytics)
